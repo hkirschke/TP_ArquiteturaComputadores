@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 using System.Xml;
 using TP_ArquiteturaComputadores.Interfaces;
 
@@ -9,22 +10,16 @@ namespace TP_ArquiteturaComputadores.Classes
 {
   public class XML : IXML
   {
-    public List<string> LstNodos => new List<string> {
-       @"/Category[name='Recursos de Hardware']/Category[name='E/S']",
-       @"/Category[name='Recursos de Hardware']/Category[name='IRQs']",
-       @"/Category[name='Recursos de Hardware']/Category[name='Memória']"
-    };
-
+    private XMLParams _XMLParams;
     public void CriaArquivoInfo()
     {
       try
       {
-        Process.Start(XMLParams.CMD_GERA_ARQUIVO_INFO);
-
+        if (!File.Exists(_XMLParams.PathArquivo))
+          Process.Start(_XMLParams.CmdGeraArquivo);
       }
       catch (Exception)
       {
-
         throw;
       }
     }
@@ -45,23 +40,37 @@ namespace TP_ArquiteturaComputadores.Classes
       }
       catch (Exception)
       {
-
         throw;
       }
     }
 
-    public XmlNodeList RetNodeXML(XmlDocument xmlDocument, string pathNodo)
+    public XmlNodeList RetNodeXML(XmlDocument _xmlDocument, string _pathNodo)
     {
       try
       {
-        XmlNodeList list = xmlDocument.SelectNodes(pathNodo);
+        XmlNodeList list = _xmlDocument.SelectNodes(_pathNodo);
         return list;
       }
       catch (Exception)
       {
-
         throw;
       }
+    }
+
+    public string RetConteudoNodo(XmlNodeList _lstNodo)
+    {
+      StringBuilder strBuilder = new StringBuilder();
+      foreach (var item in _lstNodo)
+      {
+        strBuilder.AppendLine(item.ToString());
+      }
+      //throw new NotImplementedException();
+      return strBuilder.ToString();
+    }
+
+    public XML()
+    {
+      _XMLParams = new XMLParams();
     }
   }
 }
