@@ -28,48 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-      this.textBox1 = new System.Windows.Forms.TextBox();
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
+      this.txtBoxInfo = new System.Windows.Forms.TextBox();
       this.BtnGeraArquivo = new System.Windows.Forms.Button();
       this.BtnSobreInfo = new System.Windows.Forms.Button();
+      this.BtnCarregaInfo = new System.Windows.Forms.Button();
       this.SuspendLayout();
       // 
-      // textBox1
+      // txtBoxInfo
       // 
-      this.textBox1.Location = new System.Drawing.Point(230, 28);
-      this.textBox1.Multiline = true;
-      this.textBox1.Name = "textBox1";
-      this.textBox1.Size = new System.Drawing.Size(558, 367);
-      this.textBox1.TabIndex = 0;
+      resources.ApplyResources(this.txtBoxInfo, "txtBoxInfo");
+      this.txtBoxInfo.Name = "txtBoxInfo";
       // 
       // BtnGeraArquivo
       // 
-      this.BtnGeraArquivo.AutoSize = true;
-      this.BtnGeraArquivo.Location = new System.Drawing.Point(28, 96);
+      resources.ApplyResources(this.BtnGeraArquivo, "BtnGeraArquivo");
       this.BtnGeraArquivo.Name = "BtnGeraArquivo";
-      this.BtnGeraArquivo.Size = new System.Drawing.Size(101, 23);
-      this.BtnGeraArquivo.TabIndex = 1;
-      this.BtnGeraArquivo.Text = "Gera Informações";
       this.BtnGeraArquivo.UseVisualStyleBackColor = true;
+      this.BtnGeraArquivo.Click += new System.EventHandler(this.BtnGeraArquivo_Click);
       // 
       // BtnSobreInfo
       // 
-      this.BtnSobreInfo.Location = new System.Drawing.Point(28, 198);
+      resources.ApplyResources(this.BtnSobreInfo, "BtnSobreInfo");
       this.BtnSobreInfo.Name = "BtnSobreInfo";
-      this.BtnSobreInfo.Size = new System.Drawing.Size(75, 23);
-      this.BtnSobreInfo.TabIndex = 2;
-      this.BtnSobreInfo.Text = "Informações";
       this.BtnSobreInfo.UseVisualStyleBackColor = true;
+      this.BtnSobreInfo.Click += new System.EventHandler(this.BtnSobreInfo_Click);
+      // 
+      // BtnCarregaInfo
+      // 
+      resources.ApplyResources(this.BtnCarregaInfo, "BtnCarregaInfo");
+      this.BtnCarregaInfo.Name = "BtnCarregaInfo";
+      this.BtnCarregaInfo.UseVisualStyleBackColor = true;
+      this.BtnCarregaInfo.Click += new System.EventHandler(this.BtnCarregaInfo_Click);
       // 
       // FormPrincipal
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+      resources.ApplyResources(this, "$this");
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(800, 450);
+      this.Controls.Add(this.BtnCarregaInfo);
       this.Controls.Add(this.BtnSobreInfo);
       this.Controls.Add(this.BtnGeraArquivo);
-      this.Controls.Add(this.textBox1);
+      this.Controls.Add(this.txtBoxInfo);
       this.Name = "FormPrincipal";
-      this.Text = "PUC - Arquitetura de Computadores";
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -77,9 +77,10 @@
 
     #endregion
 
-    private System.Windows.Forms.TextBox textBox1;
+    private System.Windows.Forms.TextBox txtBoxInfo;
     private System.Windows.Forms.Button BtnGeraArquivo;
     private System.Windows.Forms.Button BtnSobreInfo;
+    private System.Windows.Forms.Button BtnCarregaInfo;
   }
 }
 

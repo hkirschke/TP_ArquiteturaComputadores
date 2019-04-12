@@ -30,13 +30,14 @@ namespace TP_ArquiteturaComputadores.Classes
         Directory.CreateDirectory(XMLParams.PATH_TEMP);
     }
 
-    public XmlDocument LeInfoXML()
+    public void LeInfoXML()
     {
       try
       {
         XmlDocument xDoc = new XmlDocument();
         xDoc.Load(Path.Combine(XMLParams.PATH_TEMP, "info.xml"));
-        return xDoc;
+        _XMLParams.xmlDocument = xDoc;
+        //return xDoc;
       }
       catch (Exception)
       {
@@ -44,11 +45,12 @@ namespace TP_ArquiteturaComputadores.Classes
       }
     }
 
-    public XmlNodeList RetNodeXML(XmlDocument _xmlDocument, string _pathNodo)
+    public XmlNodeList RetNodeXML(string _pathNodo)
     {
       try
       {
-        XmlNodeList list = _xmlDocument.SelectNodes(_pathNodo);
+        //descendant::Category
+        XmlNodeList list = _XMLParams.xmlDocument.SelectNodes(_pathNodo);
         return list;
       }
       catch (Exception)
@@ -56,21 +58,25 @@ namespace TP_ArquiteturaComputadores.Classes
         throw;
       }
     }
-
-    public string RetConteudoNodo(XmlNodeList _lstNodo)
+    /// <summary>
+    /// Retorna conteúdo do nodo
+    /// </summary>
+    /// <returns></returns>
+    public string RetConteudoNodo()
     {
       StringBuilder strBuilder = new StringBuilder();
-      foreach (var item in _lstNodo)
+      XmlNodeList nodeList;
+      foreach (var item in _XMLParams.LstNodos)
       {
-        strBuilder.AppendLine(item.ToString());
+        nodeList = RetNodeXML(item);
+        strBuilder.AppendLine(nodeList.ToString());
       }
-      //throw new NotImplementedException();
       return strBuilder.ToString();
     }
 
     public XML()
     {
-      _XMLParams = new XMLParams();
+      _XMLParams = new XMLParams(); 
     }
   }
 }

@@ -8,7 +8,7 @@ namespace TP_ArquiteturaComputadores.Interfaces
     /// Lê arquivo XML.
     /// </summary> 
     /// <returns></returns>
-    XmlDocument LeInfoXML();
+    void LeInfoXML();
 
     /// <summary>
     /// Retorna dados do nodo informado.
@@ -16,7 +16,7 @@ namespace TP_ArquiteturaComputadores.Interfaces
     /// <param name="_xmlDocument"></param>
     /// <param name="_pathNodo"></param>
     /// <returns></returns>
-    XmlNodeList RetNodeXML(XmlDocument _xmlDocument, string _pathNodo);
+    XmlNodeList RetNodeXML(string _pathNodo);
 
     /// <summary>
     /// Cria diretório do XML caso não exista.
@@ -28,6 +28,10 @@ namespace TP_ArquiteturaComputadores.Interfaces
     /// </summary>
     void CriaArquivoInfo();
 
-    string RetConteudoNodo(XmlNodeList _lstNodo);
+    /// <summary>
+    /// Retorna conteúdo do nodo
+    /// </summary>
+    /// <returns></returns>
+    string RetConteudoNodo();
   }
 }
