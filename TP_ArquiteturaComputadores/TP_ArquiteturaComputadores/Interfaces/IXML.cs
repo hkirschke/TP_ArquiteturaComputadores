@@ -1,4 +1,6 @@
-﻿using System.Xml;
+﻿using System.Collections.Generic;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace TP_ArquiteturaComputadores.Interfaces
 {
@@ -12,11 +14,10 @@ namespace TP_ArquiteturaComputadores.Interfaces
 
     /// <summary>
     /// Retorna dados do nodo informado.
-    /// </summary>
-    /// <param name="_xmlDocument"></param>
+    /// </summary> 
     /// <param name="_pathNodo"></param>
     /// <returns></returns>
-    XmlNodeList RetNodeXML(string _pathNodo);
+    IEnumerable<XElement> RetNodeXML(string _pathNodo);
 
     /// <summary>
     /// Cria diretório do XML caso não exista.

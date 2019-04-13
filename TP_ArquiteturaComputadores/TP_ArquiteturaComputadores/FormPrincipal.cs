@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TP_ArquiteturaComputadores.Classes;
 
@@ -29,8 +22,7 @@ namespace TP_ArquiteturaComputadores
       }
       catch (Exception)
       {
-        MessageBox.Show("Erro ao abrir informações sobre aplicação");
-        throw;
+        MessageBox.Show("Erro ao abrir informações sobre aplicação", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
 
@@ -40,9 +32,12 @@ namespace TP_ArquiteturaComputadores
       {
         XML.CriaArquivoInfo();
       }
-      catch (Exception)
+      catch (Exception ex)
       {
-        throw;
+        if (ex.Message.Equals("Arquivo já existe"))
+          MessageBox.Show($"{ex.Message}","Atenção!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+        else
+          MessageBox.Show($"Erro gerar arquivo: {ex.Message}", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
 
@@ -53,10 +48,9 @@ namespace TP_ArquiteturaComputadores
         XML.LeInfoXML();
         txtBoxInfo.Text = XML.RetConteudoNodo();
       }
-      catch (Exception)
+      catch (Exception ex)
       {
-
-        throw;
+        MessageBox.Show($"Erro carregar informações: {ex.Message}", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
   }

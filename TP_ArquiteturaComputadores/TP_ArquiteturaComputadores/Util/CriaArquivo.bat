@@ -1,0 +1,1 @@
+﻿C:\Windows\System32\msinfo32.exe /nfo C:\temp\info.xml
