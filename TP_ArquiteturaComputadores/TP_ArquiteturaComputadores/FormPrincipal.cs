@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using TP_ArquiteturaComputadores.Classes;
 
 namespace TP_ArquiteturaComputadores
@@ -18,7 +20,6 @@ namespace TP_ArquiteturaComputadores
       {
         AboutBox aboutBox = new AboutBox();
         aboutBox.Show();
-        //Application.Run(aboutBox);
       }
       catch (Exception)
       {
@@ -46,11 +47,33 @@ namespace TP_ArquiteturaComputadores
       try
       {
         XML.LeInfoXML();
-        txtBoxInfo.Text = XML.RetConteudoNodo();
+        PreencheGrade(dtgES, XML.RetConteudoNodo(XML.XMLParams.InfoES));
+        PreencheGrade(dtgIRQ, XML.RetConteudoNodo(XML.XMLParams.InfoIRQ));
+        PreencheGrade(dtgMemo, XML.RetConteudoNodo(XML.XMLParams.Memo));
+        PreencheGrade(dtgResumo, XML.GetNodoInfo(XML.XMLParams.ResumoSistema));
       }
       catch (Exception ex)
       {
         MessageBox.Show($"Erro carregar informações: {ex.Message}", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void PreencheGrade(DataGridView dtg, IEnumerable<XElement> enumerable)
+    {
+      try
+      { 
+        foreach (XElement item in enumerable.Descendants())
+        { 
+          if (item.NextNode != null && item != null)
+          {
+            var segundaCol = (XElement)item.NextNode; 
+            dtg.Rows.Add(item.Value, segundaCol.Value);
+          }
+        }
+      }
+      catch (Exception ex)
+      {  
+        MessageBox.Show($"Erro preencher grade: {ex.Message}", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
     }
   }

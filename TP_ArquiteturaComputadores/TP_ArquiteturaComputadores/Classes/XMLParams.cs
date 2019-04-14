@@ -6,14 +6,14 @@ namespace TP_ArquiteturaComputadores.Classes
 {
   public class XMLParams
   {
-    public List<string> LstNodos => new List<string> {
-       "E/S",
-       "IRQs",
-       "Memória"
-       //@"MsInfo/Category[name='Recursos de Hardware']/Category[name='E/S']",
-       //@"MsInfo/Category[name='Recursos de Hardware']/Category[name='IRQs']",
-       //@"MsInfo/Category[name='Recursos de Hardware']/Category[name='Memória']"
-    };
+    public string ResumoSistema = "Resumo do Sistema";
+
+    public string InfoES = "E/S";
+
+    public string InfoIRQ = "IRQs";
+
+    public string Memo = "Memória";
+
     public const string PATH_TEMP = @"c:\Temp\";
 
     public string PathArquivo = $"{PATH_TEMP}info.xml";

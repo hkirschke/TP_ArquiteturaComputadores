@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Xml.Linq;
 using TP_ArquiteturaComputadores.Interfaces;
 
@@ -11,12 +10,16 @@ namespace TP_ArquiteturaComputadores.Classes
 {
   public class XML : IXML
   {
-    private XMLParams _XMLParams;
+    public XMLParams XMLParams;
+
+    /// <summary>
+    /// Cria arquivo XML com as informações.
+    /// </summary>
     public void CriaArquivoInfo()
     {
       try
       {
-        if (!File.Exists(_XMLParams.PathArquivo))
+        if (!File.Exists(XMLParams.PathArquivo))
         {
           Process process = new Process();
           ProcessStartInfo startInfo = new ProcessStartInfo
@@ -41,19 +44,24 @@ namespace TP_ArquiteturaComputadores.Classes
       }
     }
 
+    /// <summary>
+    /// Cria diretório do XML caso não exista. 
+    /// </summary>
     public void CriaDiretorio()
     {
       if (!Directory.Exists(XMLParams.PATH_TEMP))
         Directory.CreateDirectory(XMLParams.PATH_TEMP);
     }
 
+    /// <summary>
+    /// Lê arquivo XML.
+    /// </summary>
     public void LeInfoXML()
     {
       try
       {
         XDocument xDoc = XDocument.Load(Path.Combine(XMLParams.PATH_TEMP, "info.xml"));
-        _XMLParams.xmlDocument = xDoc;
-        //return xDoc;
+        XMLParams.xmlDocument = xDoc;
       }
       catch (Exception)
       {
@@ -61,54 +69,56 @@ namespace TP_ArquiteturaComputadores.Classes
       }
     }
 
-    public IEnumerable<XElement> RetNodeXML(string _pathNodo)
-    {
-      try
-      {
-        IEnumerable<XElement> items = from item in _XMLParams.xmlDocument.Descendants("Category")
-                                      where item.Attribute("name").Value.Equals(_pathNodo)
-                                      select item;
-
-        var teste1 = _XMLParams.xmlDocument.Descendants("Category");
-        IEnumerable<XElement> teste2 = items.Descendants();
-        var teste3 = _XMLParams.xmlDocument.Descendants("Category");
-        //descendant::Category
-        //XmlNodeList test1 = _XMLParams.xmlDocument.SelectNodes("MsInfo/Category");
-        //XmlNodeList test2 = _XMLParams.xmlDocument.SelectNodes("descendant::Category");
-        //XmlNodeList test3 = _XMLParams.xmlDocument.SelectNodes("descendant::Category");
-        //XmlNodeList list = _XMLParams.xmlDocument.SelectNodes(_pathNodo);
-        return teste2;
-      }
-      catch (Exception)
-      {
-        throw;
-      }
-    }
     /// <summary>
     /// Retorna conteúdo do nodo
     /// </summary>
+    /// <param name="nodeName"></param>
     /// <returns></returns>
-    public string RetConteudoNodo()
+    public IEnumerable<XElement> RetConteudoNodo(string nodeName)
     {
-      StringBuilder strBuilder = new StringBuilder();
-      IEnumerable<XElement> nodeList;
-      foreach (var item in _XMLParams.LstNodos)
-      {
-        strBuilder.AppendLine($"    Informações sobre - {item.ToString()}");
-        nodeList = RetNodeXML(item);
-        foreach (var iNode in nodeList)
-        {
-          if (!iNode.Name.LocalName.Equals("Status") && !iNode.Name.LocalName.Equals("Data"))
-            strBuilder.AppendLine(iNode.Value.ToString());
-        }
-        strBuilder.AppendLine();
+      try
+      { 
+        IEnumerable<XElement> items = from item in XMLParams.xmlDocument.Descendants("Category")
+                                      where item.Attribute("name").Value.Equals(nodeName)
+                                      select item;
+
+        IEnumerable<XElement> result = items.Descendants();
+        result.Descendants("Status").Remove();
+
+        return result;
       }
-      return strBuilder.ToString();
+      catch (Exception)
+      {
+        throw;
+      }
+    }
+
+    /// <summary>
+    /// Retorna conteúdo do nodo para Resumo do Sistema
+    /// </summary>
+    /// <param name="nodeName"></param>
+    /// <returns></returns>
+    public IEnumerable<XElement> GetNodoInfo(string nodeName)
+    {
+      try
+      { 
+        IEnumerable<XElement> items = from item in XMLParams.xmlDocument.Descendants("Category")
+                                      where item.Attribute("name").Value.Equals(nodeName) 
+                                      select item; 
+        IEnumerable<XElement> result = items.Elements(); 
+        result.Elements("Category").Remove();
+        result.Descendants("Status").Remove(); 
+        return result;
+      }
+      catch (Exception)
+      {
+        throw;
+      }
     }
 
     public XML()
     {
-      _XMLParams = new XMLParams();
+      XMLParams = new XMLParams();
     }
   }
 }

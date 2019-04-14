@@ -11,14 +11,7 @@ namespace TP_ArquiteturaComputadores.Interfaces
     /// </summary> 
     /// <returns></returns>
     void LeInfoXML();
-
-    /// <summary>
-    /// Retorna dados do nodo informado.
-    /// </summary> 
-    /// <param name="_pathNodo"></param>
-    /// <returns></returns>
-    IEnumerable<XElement> RetNodeXML(string _pathNodo);
-
+      
     /// <summary>
     /// Cria diretório do XML caso não exista.
     /// </summary>
@@ -33,6 +26,13 @@ namespace TP_ArquiteturaComputadores.Interfaces
     /// Retorna conteúdo do nodo
     /// </summary>
     /// <returns></returns>
-    string RetConteudoNodo();
+    IEnumerable<XElement> RetConteudoNodo(string nodeName);
+
+    /// <summary>
+    /// Retorna conteúdo do nodo para Resumo do Sistema
+    /// </summary>
+    /// <param name="nodeName"></param>
+    /// <returns></returns>
+    IEnumerable<XElement> GetNodoInfo(string nodeName);
   }
 }
