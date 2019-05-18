@@ -61,7 +61,7 @@ namespace TP_ArquiteturaComputadores.Classes
       try
       {
         XDocument xDoc = XDocument.Load(Path.Combine(XMLParams.PATH_TEMP, "info.xml"));
-        XMLParams.xmlDocument = xDoc;
+        XMLParams.XmlDocument = xDoc;
       }
       catch (Exception)
       {
@@ -78,7 +78,7 @@ namespace TP_ArquiteturaComputadores.Classes
     {
       try
       { 
-        IEnumerable<XElement> items = from item in XMLParams.xmlDocument.Descendants("Category")
+        IEnumerable<XElement> items = from item in XMLParams.XmlDocument.Descendants("Category")
                                       where item.Attribute("name").Value.Equals(nodeName)
                                       select item;
 
@@ -102,7 +102,7 @@ namespace TP_ArquiteturaComputadores.Classes
     {
       try
       { 
-        IEnumerable<XElement> items = from item in XMLParams.xmlDocument.Descendants("Category")
+        IEnumerable<XElement> items = from item in XMLParams.XmlDocument.Descendants("Category")
                                       where item.Attribute("name").Value.Equals(nodeName) 
                                       select item; 
         IEnumerable<XElement> result = items.Elements(); 

@@ -8,7 +8,8 @@ namespace TP_ArquiteturaComputadores
 {
   public partial class FormPrincipal : Form
   {
-    private XML XML = new XML();
+    private XML XML = new XML(); 
+
     public FormPrincipal()
     {
       InitializeComponent();
@@ -46,6 +47,7 @@ namespace TP_ArquiteturaComputadores
     {
       try
       {
+        LimpaGrades();
         XML.LeInfoXML();
         PreencheGrade(dtgES, XML.RetConteudoNodo(XML.XMLParams.InfoES));
         PreencheGrade(dtgIRQ, XML.RetConteudoNodo(XML.XMLParams.InfoIRQ));
@@ -74,6 +76,22 @@ namespace TP_ArquiteturaComputadores
       catch (Exception ex)
       {  
         MessageBox.Show($"Erro preencher grade: {ex.Message}", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+    }
+
+    private void LimpaGrades()
+    {
+      try
+      {
+        dtgES.Rows.Clear();
+        dtgIRQ.Rows.Clear();
+        dtgMemo.Rows.Clear();
+        dtgResumo.Rows.Clear();
+      }
+      catch (Exception)
+      {
+
+        throw;
       }
     }
   }

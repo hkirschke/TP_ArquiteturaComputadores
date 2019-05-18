@@ -24,7 +24,7 @@ namespace TP_ArquiteturaComputadores.Classes
 
     public const string PATH_PADRAO_XML_RECURSOS_HARDWARE = "MsInfo/Category[name='Resumo do Sistema']/Category[name='Recursos de Hardware']/Category[name='{0}']";
 
-    public XDocument xmlDocument = new XDocument();
+    public XDocument XmlDocument = new XDocument();
   }
 }
 
