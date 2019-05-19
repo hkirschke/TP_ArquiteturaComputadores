@@ -53,6 +53,7 @@ namespace TP_ArquiteturaComputadores
         PreencheGrade(dtgIRQ, XML.RetConteudoNodo(XML.XMLParams.InfoIRQ));
         PreencheGrade(dtgMemo, XML.RetConteudoNodo(XML.XMLParams.Memo));
         PreencheGrade(dtgResumo, XML.GetNodoInfo(XML.XMLParams.ResumoSistema));
+        DiskService.GetInfo(dataGridView1);
       }
       catch (Exception ex)
       {
@@ -87,12 +88,12 @@ namespace TP_ArquiteturaComputadores
         dtgIRQ.Rows.Clear();
         dtgMemo.Rows.Clear();
         dtgResumo.Rows.Clear();
+        dataGridView1.Rows.Clear();
       }
-      catch (Exception)
-      {
-
-        throw;
+      catch (Exception ex)
+      { 
+        MessageBox.Show($"Erro limpar grades de informações: {ex.Message}", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
       }
-    }
+    } 
   }
 }

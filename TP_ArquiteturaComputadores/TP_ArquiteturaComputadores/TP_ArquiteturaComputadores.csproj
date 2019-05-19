@@ -53,6 +53,7 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\DiskService.cs" />
     <Compile Include="Classes\XML.cs" />
     <Compile Include="Classes\XMLParams.cs" />
     <Compile Include="FormPrincipal.cs">

@@ -49,6 +49,13 @@
       this.dtgMemo = new System.Windows.Forms.DataGridView();
       this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.tabPage4 = new System.Windows.Forms.TabPage();
+      this.dataGridView1 = new System.Windows.Forms.DataGridView();
+      this.dtgDisk = new System.Windows.Forms.DataGridView();
+      this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.FreeSpace = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.pictureBox1 = new System.Windows.Forms.PictureBox();
       this.TabInfoES.SuspendLayout();
       this.tabPage1.SuspendLayout();
@@ -59,6 +66,9 @@
       ((System.ComponentModel.ISupportInitialize)(this.dtgIRQ)).BeginInit();
       this.tabPage3.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dtgMemo)).BeginInit();
+      this.tabPage4.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.dtgDisk)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
       this.SuspendLayout();
       // 
@@ -96,6 +106,7 @@
       this.TabInfoES.Controls.Add(this.TabInfoHard);
       this.TabInfoES.Controls.Add(this.tabPage2);
       this.TabInfoES.Controls.Add(this.tabPage3);
+      this.TabInfoES.Controls.Add(this.tabPage4);
       this.TabInfoES.Multiline = true;
       this.TabInfoES.Name = "TabInfoES";
       this.TabInfoES.SelectedIndex = 0;
@@ -236,6 +247,67 @@
       this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
       this.dataGridViewTextBoxColumn4.ReadOnly = true;
       // 
+      // tabPage4
+      // 
+      this.tabPage4.Controls.Add(this.dataGridView1);
+      this.tabPage4.Controls.Add(this.dtgDisk);
+      resources.ApplyResources(this.tabPage4, "tabPage4");
+      this.tabPage4.Name = "tabPage4";
+      this.tabPage4.UseVisualStyleBackColor = true;
+      // 
+      // dataGridView1
+      // 
+      this.dataGridView1.AllowUserToAddRows = false;
+      this.dataGridView1.AllowUserToDeleteRows = false;
+      this.dataGridView1.AllowUserToOrderColumns = true;
+      this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+      this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
+      this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      resources.ApplyResources(this.dataGridView1, "dataGridView1");
+      this.dataGridView1.Name = "dataGridView1";
+      this.dataGridView1.ReadOnly = true;
+      // 
+      // dtgDisk
+      // 
+      this.dtgDisk.AllowUserToAddRows = false;
+      this.dtgDisk.AllowUserToDeleteRows = false;
+      this.dtgDisk.AllowUserToOrderColumns = true;
+      this.dtgDisk.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+      this.dtgDisk.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
+      this.dtgDisk.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dtgDisk.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Nome,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.FreeSpace});
+      resources.ApplyResources(this.dtgDisk, "dtgDisk");
+      this.dtgDisk.Name = "dtgDisk";
+      this.dtgDisk.ReadOnly = true;
+      // 
+      // Nome
+      // 
+      resources.ApplyResources(this.Nome, "Nome");
+      this.Nome.Name = "Nome";
+      this.Nome.ReadOnly = true;
+      // 
+      // dataGridViewTextBoxColumn5
+      // 
+      resources.ApplyResources(this.dataGridViewTextBoxColumn5, "dataGridViewTextBoxColumn5");
+      this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+      this.dataGridViewTextBoxColumn5.ReadOnly = true;
+      // 
+      // dataGridViewTextBoxColumn6
+      // 
+      resources.ApplyResources(this.dataGridViewTextBoxColumn6, "dataGridViewTextBoxColumn6");
+      this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+      this.dataGridViewTextBoxColumn6.ReadOnly = true;
+      // 
+      // FreeSpace
+      // 
+      resources.ApplyResources(this.FreeSpace, "FreeSpace");
+      this.FreeSpace.Name = "FreeSpace";
+      this.FreeSpace.ReadOnly = true;
+      // 
       // pictureBox1
       // 
       resources.ApplyResources(this.pictureBox1, "pictureBox1");
@@ -262,6 +334,9 @@
       ((System.ComponentModel.ISupportInitialize)(this.dtgIRQ)).EndInit();
       this.tabPage3.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.dtgMemo)).EndInit();
+      this.tabPage4.ResumeLayout(false);
+      ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.dtgDisk)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
       this.ResumeLayout(false);
 
@@ -289,6 +364,13 @@
     private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     private System.Windows.Forms.PictureBox pictureBox1;
+    private System.Windows.Forms.TabPage tabPage4;
+    private System.Windows.Forms.DataGridView dtgDisk;
+    private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
+    private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+    private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+    private System.Windows.Forms.DataGridViewTextBoxColumn FreeSpace; 
+    private System.Windows.Forms.DataGridView dataGridView1;
   }
 }
 
